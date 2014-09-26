@@ -8,7 +8,11 @@ A private service to store and retrieve secrets, keywords, notes, etc.
 * user access without entering passwords
 * back-channel session number (sms)
 * non-browser UI (node-webkit)
-* data encrypted and persisted at server 
+* data encrypted and persisted at private server
+
+# Warning
+
+*Use at your own risk.  This software is suited for use in private networks that are fire-walled from remote access or only using HTTPS.*
 
 # Installation
 
