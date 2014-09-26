@@ -1,0 +1,69 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="781" measuredH="1191" mockupW="738" mockupH="1159">
+  <controls>
+    <control controlID="0" controlTypeID="__group__" x="43" y="32" w="738" h="1159" measuredW="738" measuredH="1159" zOrder="0" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="0" y="0" w="-1" h="-1" measuredW="307" measuredH="27" zOrder="1" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Enigma%20Keyword%20Service%20UI</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="__group__" x="0" y="1089" w="241" h="70" measuredW="241" measuredH="70" zOrder="0" locked="false" isInGroup="0">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="241" h="70" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="3"/>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::Paragraph" x="18" y="17" w="204" h="36" measuredW="200" measuredH="80" zOrder="1" locked="false" isInGroup="3">
+              <controlProperties>
+                <align>left</align>
+                <text>Version%202014.09.26%0Adarryl.west@raincitysoftware.com</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="42" w="612" h="496" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com</text>
+          </controlProperties>
+        </control>
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="212" y="255" w="188" h="-1" measuredW="73" measuredH="27" zOrder="3" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Enter%20PIN</text>
+          </controlProperties>
+        </control>
+        <control controlID="7" controlTypeID="com.balsamiq.mockups::IconLabel" x="208" y="299" w="61" h="-1" measuredW="48" measuredH="63" zOrder="4" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Image%201</text>
+          </controlProperties>
+        </control>
+        <control controlID="8" controlTypeID="com.balsamiq.mockups::IconLabel" x="276" y="299" w="61" h="-1" measuredW="50" measuredH="63" zOrder="5" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Image%202</text>
+          </controlProperties>
+        </control>
+        <control controlID="9" controlTypeID="com.balsamiq.mockups::IconLabel" x="339" y="299" w="61" h="-1" measuredW="49" measuredH="63" zOrder="6" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Image%203</text>
+          </controlProperties>
+        </control>
+        <control controlID="10" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="42" w="109" h="83" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>access%20landing%20page</text>
+          </controlProperties>
+        </control>
+        <control controlID="11" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="567" w="612" h="496" measuredW="450" measuredH="400" zOrder="8" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com/home</text>
+          </controlProperties>
+        </control>
+        <control controlID="16" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="567" w="109" h="83" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>home%20page</text>
+          </controlProperties>
+        </control>
+        <control controlID="17" controlTypeID="com.balsamiq.mockups::ButtonBar" x="15" y="658" w="-1" h="-1" measuredW="156" measuredH="27" zOrder="10" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>One%2C%20Two%2C%20Three</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+  </controls>
+</mockup>
