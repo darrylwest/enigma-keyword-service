@@ -1,0 +1,41 @@
+{
+  "name": "enigma-keyword-service",
+  "author": {
+    "name": "darryl.west@raincitysoftware.com",
+    "email": "dwest@raincitysoftware.com"
+  },
+  "version": "00.90.10",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darrylwest/enigma-keyword-service.git"
+  },
+  "scripts": {
+    "start": "bin/run.js",
+    "test": "grunt testAll"
+  },
+  "dependencies": {
+    "commander": "1.x",
+    "express": "^4.8.2",
+    "faye": "^1.0.3",
+    "lodash": "~2.4.1",
+    "node-service-commons": "^0.90.56",
+    "redis": "^0.12.1",
+    "simple-node-logger": "^0.92.11"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "casual": "~1.4.5",
+    "chai": "~1.9.1",
+    "gulp": "^3.8.8",
+    "gulp-browserify": "^0.5.0",
+    "gulp-jshint": "^1.8.4",
+    "gulp-mocha": "^1.1.0",
+    "gulp-uglify": "^1.0.1",
+    "jshint-stylish": "^0.4.0",
+    "mock-redis-client": "^0.90.14",
+    "superagent": "^0.18.0"
+  },
+  "description": "",
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/darrylwest/enigma-keyword-service"
+}

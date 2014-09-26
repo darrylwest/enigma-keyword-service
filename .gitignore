@@ -1,0 +1,16 @@
+__MAC*
+.DS_Store
+*.class
+*.tz
+*.gz
+dist
+build
+.idea
+.settings
+.gradle
+*.swp
+*.log
+node_modules
+nohup.out
+process.pid
+jsdoc
