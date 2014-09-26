@@ -13,7 +13,7 @@ watch:
 	@( gulp )
 
 docs:
-	@( grunt jsdoc )
+	@( gulp jsdoc )
 
 version:
 	@( cd app ; node app --version )
