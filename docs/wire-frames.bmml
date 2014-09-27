@@ -1,79 +1,96 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="890" measuredH="1191" mockupW="847" mockupH="1159">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="905" measuredH="1191" mockupW="862" mockupH="1159">
   <controls>
-    <control controlID="0" controlTypeID="__group__" x="43" y="32" w="847" h="1159" measuredW="941" measuredH="1159" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::VCurly" x="671" y="215" w="234" h="172" measuredW="180" measuredH="140" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>As%20each%20pin%20key%20is%20entered%0Athe%20images%20change%20%28after%204%0Achars%29%0A%20%0AWhen%20a%20recognized%20pin%20is%20entered%0Aone%20of%20the%20images%20is%20replaced%20with%0Athe%20user%27s%20preferred%20pic.%20%20that%27s%20%0Awhen%20it%27s%20time%20to%20click.</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="__group__" x="43" y="1121" w="241" h="70" measuredW="241" measuredH="70" zOrder="0" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
-        <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="0" y="0" w="-1" h="-1" measuredW="307" measuredH="27" zOrder="1" locked="false" isInGroup="0">
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="241" h="70" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="3"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Paragraph" x="18" y="17" w="204" h="36" measuredW="200" measuredH="80" zOrder="1" locked="false" isInGroup="3">
           <controlProperties>
-            <text>Enigma%20Keyword%20Service%20UI</text>
-          </controlProperties>
-        </control>
-        <control controlID="3" controlTypeID="__group__" x="0" y="1089" w="241" h="70" measuredW="241" measuredH="70" zOrder="0" locked="false" isInGroup="0">
-          <groupChildrenDescriptors>
-            <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="241" h="70" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="3"/>
-            <control controlID="1" controlTypeID="com.balsamiq.mockups::Paragraph" x="18" y="17" w="204" h="36" measuredW="200" measuredH="80" zOrder="1" locked="false" isInGroup="3">
-              <controlProperties>
-                <align>left</align>
-                <text>Version%202014.09.26%0Adarryl.west@raincitysoftware.com</text>
-              </controlProperties>
-            </control>
-          </groupChildrenDescriptors>
-        </control>
-        <control controlID="4" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="42" w="612" h="341" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com</text>
-          </controlProperties>
-        </control>
-        <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="216" y="170" w="188" h="-1" measuredW="73" measuredH="27" zOrder="3" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Enter%20PIN</text>
-          </controlProperties>
-        </control>
-        <control controlID="7" controlTypeID="com.balsamiq.mockups::IconLabel" x="212" y="214" w="61" h="-1" measuredW="48" measuredH="63" zOrder="4" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Image%201</text>
-          </controlProperties>
-        </control>
-        <control controlID="8" controlTypeID="com.balsamiq.mockups::IconLabel" x="280" y="214" w="61" h="-1" measuredW="50" measuredH="63" zOrder="5" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Image%202</text>
-          </controlProperties>
-        </control>
-        <control controlID="9" controlTypeID="com.balsamiq.mockups::IconLabel" x="343" y="214" w="61" h="-1" measuredW="49" measuredH="63" zOrder="6" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Image%203</text>
-          </controlProperties>
-        </control>
-        <control controlID="10" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="42" w="218" h="128" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>access%20landing%20page%0A%20%0Aenter%20your%20pin%20%28pre-configured%29%0Athen%20select%20the%20correct%20image%0Afrom%20one%20of%20the%20three.</text>
-          </controlProperties>
-        </control>
-        <control controlID="11" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="408" w="612" h="319" measuredW="450" measuredH="400" zOrder="8" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com/session</text>
-          </controlProperties>
-        </control>
-        <control controlID="16" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="423" w="196" h="145" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>session%20access%20page%0A%20%0Await%20for%20the%20SMS%20message%0Ato%20get%20your%20session%20id.%0A%20%0Aenter%20it%20and%20click%20start.</text>
-          </controlProperties>
-        </control>
-        <control controlID="18" controlTypeID="com.balsamiq.mockups::TextInput" x="212" y="534" w="188" h="-1" measuredW="124" measuredH="27" zOrder="10" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Enter%20Session%20Key</text>
-          </controlProperties>
-        </control>
-        <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="212" y="576" w="188" h="27" measuredW="53" measuredH="27" zOrder="11" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Start</text>
-          </controlProperties>
-        </control>
-        <control controlID="20" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="755" w="612" h="319" measuredW="450" measuredH="400" zOrder="12" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com/home</text>
+            <align>left</align>
+            <text>Version%202014.09.27%0Adarryl.west@raincitysoftware.com</text>
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::SubTitle" x="43" y="32" w="-1" h="-1" measuredW="307" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Enigma%20Keyword%20Service%20UI</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="43" y="74" w="612" h="341" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="259" y="202" w="188" h="-1" measuredW="73" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Enter%20PIN</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::IconLabel" x="255" y="246" w="61" h="-1" measuredW="48" measuredH="63" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Image%201</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::IconLabel" x="323" y="246" w="61" h="-1" measuredW="50" measuredH="63" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Image%202</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::IconLabel" x="386" y="246" w="61" h="-1" measuredW="49" measuredH="63" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Image%203</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::StickyNote" x="672" y="74" w="218" h="128" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>access%20landing%20page%0A%20%0Aenter%20your%20pin%20%28pre-configured%29%0Athen%20select%20the%20correct%20image%0Afrom%20one%20of%20the%20three.</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="43" y="440" w="612" h="319" measuredW="450" measuredH="400" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com/session</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::StickyNote" x="672" y="455" w="196" h="145" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>session%20access%20page%0A%20%0Await%20for%20the%20SMS%20message%0Ato%20get%20your%20session%20id.%0A%20%0Aenter%20it%20and%20click%20start.</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::TextInput" x="255" y="566" w="188" h="-1" measuredW="124" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Enter%20Session%20Key</text>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="255" y="608" w="188" h="27" measuredW="53" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Start</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="43" y="787" w="612" h="319" measuredW="450" measuredH="400" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com/home</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::Tooltip" x="418" y="962" w="172" h="45" measuredW="177" measuredH="45" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>search%20for%20something...</text>
+        <tooltipDirection>NW</tooltipDirection>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::StickyNote" x="678" y="788" w="190" h="123" measuredW="109" measuredH="123" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>the%20home%20screen%20is%20very%0Abasic.%20%20you%20need%20to%20search%0Afor%20content%20before%20anything%0Ais%20displayed.</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::TextInput" x="136" y="911" w="439" h="-1" measuredW="123" measuredH="27" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Enter%20topic%20search</text>
+      </controlProperties>
     </control>
   </controls>
 </mockup>
