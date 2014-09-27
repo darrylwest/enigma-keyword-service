@@ -1,6 +1,6 @@
-<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="781" measuredH="1191" mockupW="738" mockupH="1159">
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="890" measuredH="1191" mockupW="847" mockupH="1159">
   <controls>
-    <control controlID="0" controlTypeID="__group__" x="43" y="32" w="738" h="1159" measuredW="738" measuredH="1159" zOrder="0" locked="false" isInGroup="-1">
+    <control controlID="0" controlTypeID="__group__" x="43" y="32" w="847" h="1159" measuredW="941" measuredH="1159" zOrder="0" locked="false" isInGroup="-1">
       <groupChildrenDescriptors>
         <control controlID="2" controlTypeID="com.balsamiq.mockups::SubTitle" x="0" y="0" w="-1" h="-1" measuredW="307" measuredH="27" zOrder="1" locked="false" isInGroup="0">
           <controlProperties>
@@ -18,49 +18,59 @@
             </control>
           </groupChildrenDescriptors>
         </control>
-        <control controlID="4" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="42" w="612" h="496" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="0">
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="42" w="612" h="341" measuredW="450" measuredH="400" zOrder="2" locked="false" isInGroup="0">
           <controlProperties>
             <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com</text>
           </controlProperties>
         </control>
-        <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="212" y="255" w="188" h="-1" measuredW="73" measuredH="27" zOrder="3" locked="false" isInGroup="0">
+        <control controlID="6" controlTypeID="com.balsamiq.mockups::TextInput" x="216" y="170" w="188" h="-1" measuredW="73" measuredH="27" zOrder="3" locked="false" isInGroup="0">
           <controlProperties>
             <text>Enter%20PIN</text>
           </controlProperties>
         </control>
-        <control controlID="7" controlTypeID="com.balsamiq.mockups::IconLabel" x="208" y="299" w="61" h="-1" measuredW="48" measuredH="63" zOrder="4" locked="false" isInGroup="0">
+        <control controlID="7" controlTypeID="com.balsamiq.mockups::IconLabel" x="212" y="214" w="61" h="-1" measuredW="48" measuredH="63" zOrder="4" locked="false" isInGroup="0">
           <controlProperties>
             <text>Image%201</text>
           </controlProperties>
         </control>
-        <control controlID="8" controlTypeID="com.balsamiq.mockups::IconLabel" x="276" y="299" w="61" h="-1" measuredW="50" measuredH="63" zOrder="5" locked="false" isInGroup="0">
+        <control controlID="8" controlTypeID="com.balsamiq.mockups::IconLabel" x="280" y="214" w="61" h="-1" measuredW="50" measuredH="63" zOrder="5" locked="false" isInGroup="0">
           <controlProperties>
             <text>Image%202</text>
           </controlProperties>
         </control>
-        <control controlID="9" controlTypeID="com.balsamiq.mockups::IconLabel" x="339" y="299" w="61" h="-1" measuredW="49" measuredH="63" zOrder="6" locked="false" isInGroup="0">
+        <control controlID="9" controlTypeID="com.balsamiq.mockups::IconLabel" x="343" y="214" w="61" h="-1" measuredW="49" measuredH="63" zOrder="6" locked="false" isInGroup="0">
           <controlProperties>
             <text>Image%203</text>
           </controlProperties>
         </control>
-        <control controlID="10" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="42" w="109" h="83" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="0">
+        <control controlID="10" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="42" w="218" h="128" measuredW="109" measuredH="123" zOrder="7" locked="false" isInGroup="0">
           <controlProperties>
-            <text>access%20landing%20page</text>
+            <text>access%20landing%20page%0A%20%0Aenter%20your%20pin%20%28pre-configured%29%0Athen%20select%20the%20correct%20image%0Afrom%20one%20of%20the%20three.</text>
           </controlProperties>
         </control>
-        <control controlID="11" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="567" w="612" h="496" measuredW="450" measuredH="400" zOrder="8" locked="false" isInGroup="0">
+        <control controlID="11" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="408" w="612" h="319" measuredW="450" measuredH="400" zOrder="8" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com/session</text>
+          </controlProperties>
+        </control>
+        <control controlID="16" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="423" w="196" h="145" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>session%20access%20page%0A%20%0Await%20for%20the%20SMS%20message%0Ato%20get%20your%20session%20id.%0A%20%0Aenter%20it%20and%20click%20start.</text>
+          </controlProperties>
+        </control>
+        <control controlID="18" controlTypeID="com.balsamiq.mockups::TextInput" x="212" y="534" w="188" h="-1" measuredW="124" measuredH="27" zOrder="10" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Enter%20Session%20Key</text>
+          </controlProperties>
+        </control>
+        <control controlID="19" controlTypeID="com.balsamiq.mockups::Button" x="212" y="576" w="188" h="27" measuredW="53" measuredH="27" zOrder="11" locked="false" isInGroup="0">
+          <controlProperties>
+            <text>Start</text>
+          </controlProperties>
+        </control>
+        <control controlID="20" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="0" y="755" w="612" h="319" measuredW="450" measuredH="400" zOrder="12" locked="false" isInGroup="0">
           <controlProperties>
             <text>Enigma%20Keyword%20Service%0Ahttp%3A//mysecrets.com/home</text>
-          </controlProperties>
-        </control>
-        <control controlID="16" controlTypeID="com.balsamiq.mockups::StickyNote" x="629" y="567" w="109" h="83" measuredW="109" measuredH="123" zOrder="9" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>home%20page</text>
-          </controlProperties>
-        </control>
-        <control controlID="17" controlTypeID="com.balsamiq.mockups::ButtonBar" x="15" y="658" w="-1" h="-1" measuredW="156" measuredH="27" zOrder="10" locked="false" isInGroup="0">
-          <controlProperties>
-            <text>One%2C%20Two%2C%20Three</text>
           </controlProperties>
         </control>
       </groupChildrenDescriptors>
