@@ -14,6 +14,10 @@ A private service to store and retrieve secrets, keywords, notes, etc.
 
 *Use at your own risk.  This software is suited for use in private networks that are fire-walled from remote access or only using HTTPS.*
 
+# User Interface
+
+![wire frame](./docs/wire-frames.png)
+
 # Installation
 
 ~~~
