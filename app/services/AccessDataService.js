@@ -60,6 +60,14 @@ var AccessDataService = function(options) {
     this.validate = function(model, errors) {
         if (!errors) errors = [];
 
+        if (!model.topic) {
+            errors.push( 'access model must include a topic');
+        }
+
+        if (!model.title) {
+            errors.push( 'access model must include a title' );
+        }
+
         if (!model.status) {
             errors.push( 'access model must include a status code');
         }

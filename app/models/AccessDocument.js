@@ -15,6 +15,12 @@ var AccessDocument = function(params) {
 
     AbstractBaseModel.extend( this, params );
 
+    this.topic = params.topic;
+    this.title = params.title;
+    this.content = params.content;
+
+    this.encryption = params.encryption; // none, blowfish, aes, etc
+
     this.status = params.status;
 };
 

@@ -24,7 +24,9 @@ var AccessDataset = function() {
     this.createModelParams = function() {
         var params = dataset.createBaseModelParams();
 
+        params.topic = casual.word;
         params.status = 'active';
+        params.title = casual.title;
 
         return params;
     };
