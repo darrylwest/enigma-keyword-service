@@ -19,7 +19,7 @@ var AccessDocument = function(params) {
     this.title = params.title;
     this.content = params.content;
 
-    this.encryption = params.encryption; // none, blowfish, aes, etc
+    this.encryption = params.encryption || 'none'; // none, blowfish, aes, etc
 
     this.status = params.status;
 };
