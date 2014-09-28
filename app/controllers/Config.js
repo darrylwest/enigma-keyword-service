@@ -31,10 +31,10 @@ var Config = function(options) {
     this.appkey = 'dc0d9c98-21b6-11e4-902a-ff9a58d39bfe';
     this.includeXAPIKey = true;
 
-    this.apptitle = 'Markup Service';
-    this.copyright = 'Copyright (c) 2014, roundpeg';
+    this.apptitle = 'Enigma Access Service';
+    this.copyright = 'Copyright (c) 2014, raincity';
 
-    this.baseURI = '/MarkupService';
+    this.baseURI = '/AccessService';
     this.port = 15061;
 
     this.messageServiceURL = 'http://localhost:29168/markup';

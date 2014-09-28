@@ -50,9 +50,9 @@ var ServiceFactory = function(options) {
             opts.log = createLogger( AccessWebService.SERVICE_NAME );
             opts.dataService = factory.createAccessDataService();
 
-            opts.listName = 'markupList';
-            opts.modelName = 'markup';
-            opts.domain = 'markup';
+            opts.listName = 'accessList';
+            opts.modelName = 'access';
+            opts.domain = 'access';
 
             service = new AccessWebService( opts );
 
