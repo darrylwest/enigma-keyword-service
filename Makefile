@@ -18,9 +18,13 @@ docs:
 version:
 	@( cd app ; node app --version )
 
+run:
+	@( node app/app.js --env development )
+
 .PHONY:	unit
 .PHONY:	npm
 .PHONY:	watch
 .PHONY:	test
 .PHONY:	docs
+.PHONY:	run
 .PHONY:	version

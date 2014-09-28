@@ -28,16 +28,16 @@ var Config = function(options) {
     // set the command line arg/defaults
     this.environment = options.env;
 
-    this.appkey = 'dc0d9c98-21b6-11e4-902a-ff9a58d39bfe';
+    this.appkey = 'f804069e-472c-11e4-8207-0b0c205e8f2a';
     this.includeXAPIKey = true;
 
-    this.apptitle = 'Enigma Access Service';
-    this.copyright = 'Copyright (c) 2014, raincity';
+    this.apptitle = 'Enigma Service';
+    this.copyright = 'Copyright (c) 2014, Rain City Software';
 
-    this.baseURI = '/AccessService';
+    this.baseURI = '/EnigmaService';
     this.port = 15061;
 
-    this.messageServiceURL = 'http://localhost:29168/markup';
+    this.messageServiceURL = 'http://localhost:29163/enigma';
 };
 
 Config.development = function(opts) {
