@@ -5,5 +5,5 @@
 
 HOST='http://alameda.local:15061'
 
-curl -H 'x-api-key:dc0d9c98-21b6-11e4-902a-ff9a58d39bfe' -X GET "${HOST}/MarkupService/status"
+curl -H 'x-api-key:f804069e-472c-11e4-8207-0b0c205e8f2a' -X GET "${HOST}/EnigmaService/status"
 

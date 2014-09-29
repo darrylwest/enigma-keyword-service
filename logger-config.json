@@ -1,0 +1,14 @@
+{
+    "appenders":[
+        {
+            "typeName":"RollingFileAppender",
+            "level":"info"
+        }
+    ],
+    "loggers":[
+        {
+            "category":"ApplicationFactory",
+            "level":"info"
+        }
+    ]
+}

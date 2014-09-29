@@ -12,6 +12,7 @@ var app = '../../app',
     dash = require('lodash' ),
     AbstractApplicationFactory = require( 'node-service-commons' ).controllers.AbstractApplicationFactory,
     BootStrap = require( 'node-service-commons' ).controllers.CommonBootStrap,
+    LogManager = require('simple-node-logger' ),
     Config = require('./config' ),
     ServiceFactory = require('./ServiceFactory');
 
@@ -73,9 +74,6 @@ ApplicationFactory.createInstance = function() {
     'use strict';
 
     var bootStrap = new BootStrap( Config.VERSION );
-
-    // this is how to add a new command line switch/option
-    // bootStrap.getParser().option('-c, --configfile [configfile]', 'set the configfile', 'vendor-config.json');
 
     var options = bootStrap.parseCommandLine( process.argv );
 

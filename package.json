@@ -17,7 +17,7 @@
     "express": "^4.8.2",
     "faye": "^1.0.3",
     "lodash": "~2.4.1",
-    "node-service-commons": "^0.90.56",
+    "node-service-commons": "^0.90.61",
     "redis": "^0.12.1",
     "simple-node-logger": "^0.92.11"
   },

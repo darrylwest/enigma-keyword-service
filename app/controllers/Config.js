@@ -6,7 +6,8 @@
  */
 var VERSION = require( __dirname + '/../../package.json').version;
 
-var externalConfig;
+var externalConfig,
+    fs = require('fs');
 
 /**
  * @param options
@@ -28,15 +29,15 @@ var Config = function(options) {
     // set the command line arg/defaults
     this.environment = options.env;
 
-    this.appkey = 'f804069e-472c-11e4-8207-0b0c205e8f2a';
+    this.appkey = externalConfig.appkey;
     this.includeXAPIKey = true;
 
     this.apptitle = 'Enigma Service';
     this.copyright = 'Copyright (c) 2014, Rain City Software';
 
     this.baseURI = '/EnigmaService';
-    this.port = 15061;
 
+    this.port = 15061;
     this.messageServiceURL = 'http://localhost:29163/enigma';
 };
 
@@ -69,6 +70,18 @@ Config.production = function(opts) {
     if (!opts) opts = {};
     opts.env = 'production';
     var config = new Config( opts );
+
+    config.readLoggerConfig = function() {
+        var opts = {};
+
+        opts.loggerConfigFile = './logger-config.json';
+        opts.logDirectory = process.env.HOME + '/logs';
+        opts.fileNamePattern = 'enigma-service-<date>.log';
+        opts.dateFormat = 'YYYY.MM.DD';
+        opts.refresh = 20000;
+
+        return opts;
+    };
 
     return config;
 };
