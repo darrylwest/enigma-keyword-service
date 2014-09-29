@@ -1,6 +1,6 @@
 {
     "name":"EnigmaService",
-    "keys":"<access keys>";
+    "keys":"<accesskeys>",
     "database":"redis",
     "appkey":"f804069e-472c-11e4-8207-0b0c205e8f2a",
     "baseURI":"/EnigmaService",

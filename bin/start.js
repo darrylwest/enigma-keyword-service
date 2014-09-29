@@ -6,10 +6,10 @@
 var fs = require('fs'),
     spawn = require('child_process').spawn,
     env = 'production',
-    config = process.cwd() + '/config.json',
+    config = process.cwd() + '/app-config.json',
     out = fs.openSync('./nohup.log', 'a'),
     err = fs.openSync('./nohup.log', 'a'),
-    args = [ 'app/app.js', '--env', env,  '--configfile', config ],
+    args = [ 'app/app.js', '--env', env, '--configfile', config  ],
     opts = {
         detached:true,
         stdio:[ 'ignore', out, err ]
