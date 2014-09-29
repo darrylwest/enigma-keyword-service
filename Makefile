@@ -19,7 +19,7 @@ version:
 	@( cd app ; node app --version )
 
 run:
-	@( node app/app.js --env development )
+	@( node app/app.js --env development --configfile `pwd`/app-config.json )
 
 .PHONY:	unit
 .PHONY:	npm
