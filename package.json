@@ -10,7 +10,7 @@
     "url": "https://github.com/darrylwest/enigma-keyword-service.git"
   },
   "scripts": {
-    "test": "grunt testAll"
+    "test": "gulp test"
   },
   "dependencies": {
     "commander": "1.x",
