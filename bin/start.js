@@ -20,7 +20,17 @@ console.log( 'pid: ', child.pid );
 child.unref();
 
 setTimeout(function() {
+    var exec = require('child_process').exec;
+
     console.log('show status...');
+    exec( 'bin/status.js', function(err, stdout, stderr) {
+        if (err) {
+            throw err;
+        } else {
+            console.log( stdout );
+        }
+    });
+
 }, 2500);
 
 
