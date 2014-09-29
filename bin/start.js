@@ -6,10 +6,10 @@
 var fs = require('fs'),
     spawn = require('child_process').spawn,
     env = 'production',
-    config = process.cwd() + '/app-config.json',
+    configFile = process.cwd() + '/app-config.json',
     out = fs.openSync('./nohup.log', 'a'),
     err = fs.openSync('./nohup.log', 'a'),
-    args = [ 'app/app.js', '--env', env, '--configfile', config  ],
+    args = [ 'app/app.js', '--env', env, '--configfile', configFile  ],
     opts = {
         detached:true,
         stdio:[ 'ignore', out, err ]
@@ -18,4 +18,10 @@ var fs = require('fs'),
 
 console.log( 'pid: ', child.pid );
 child.unref();
+
+setTimeout(function() {
+    console.log('show status...');
+}, 2500);
+
+
 
