@@ -2,6 +2,7 @@
 
 // dpw@alameda.local
 // 2014.09.28
+'use strict';
 
 var fs = require('fs'),
     spawn = require('child_process').spawn,

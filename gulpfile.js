@@ -11,12 +11,13 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify');
 
 var paths = {
-    scripts: 'src/*/*.js',
-    tests: 'test/*/*.js'
+    src: 'src/*/*.js',
+    tests: 'test/*/*.js',
+    bin: 'bin/*.js'
 };
 
 gulp.task('test', function () {
-    gulp.src(paths.scripts)
+    gulp.src([ paths.src, paths.tests, paths.bin ] )
         .pipe( jshint() )
         .pipe( jshint.reporter('jshint-stylish') );
       
@@ -26,18 +27,18 @@ gulp.task('test', function () {
 
 /**
 gulp.task('build', function () {
-  gulp.src('src/fake-identity.js')
-    .pipe(browserify({
-      insertGlobals: true,
-      debug: true
-    }))
-    .pipe(uglify())
-    .pipe(gulp.dest('dist'));
+    gulp.src( [ paths.src ] )
+        .pipe(browserify({
+            insertGlobals: true,
+            debug: true
+        }))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'));
 });
 */
 
 gulp.task('watch', [ 'test' ], function () {
-    gulp.watch([ paths.scripts, paths.tests ], [ 'test' ]);
+    gulp.watch([ paths.src, paths.tests ], [ 'test' ]);
 });
 
 gulp.task('default', ['test', 'watch']);

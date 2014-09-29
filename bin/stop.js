@@ -2,7 +2,7 @@
 
 // dpw@alameda.local
 // 2014.09.29
-
+'use strict';
 
 var exec = require('child_process').exec,
     configFile = process.cwd() + '/app-config.json',
