@@ -1,0 +1,14 @@
+{
+    "name":"EnigmaService",
+    "keys":"<access keys>";
+    "database":"redis",
+    "appkey":"f804069e-472c-11e4-8207-0b0c205e8f2a",
+    "baseURI":"/EnigmaService",
+    "port":15061,
+    "logging":{
+        "fileNamePattern":"enigma-service-<date>.log",
+        "dateFormat":"YYYY-MM-DD",
+        "refresh":30000
+    }
+}
+

@@ -14,4 +14,3 @@ node_modules
 nohup.out
 process.pid
 jsdoc
-config.json
