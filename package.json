@@ -22,7 +22,6 @@
     "simple-node-logger": "^0.92.11"
   },
   "devDependencies": {
-    "mocha": "~1.18.2",
     "casual": "~1.4.5",
     "chai": "~1.9.1",
     "gulp": "^3.8.8",
@@ -31,6 +30,7 @@
     "gulp-mocha": "^1.1.0",
     "gulp-uglify": "^1.0.1",
     "jshint-stylish": "^0.4.0",
+    "mocha": "~1.18.2",
     "mock-redis-client": "^0.90.14",
     "superagent": "^0.18.0"
   },
@@ -38,5 +38,3 @@
   "license": "Apache 2.0",
   "homepage": "https://github.com/darrylwest/enigma-keyword-service"
 }
-
-
