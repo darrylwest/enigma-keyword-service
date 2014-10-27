@@ -28,6 +28,7 @@ describe('ServiceFactory', function() {
                 'createDataSourceFactory',
                 'createAccessWebService',
                 'createAccessDataService',
+                'createConfigurationDataService',
                 'createImageWebService',
                 // dao
                 'createAccessDao',

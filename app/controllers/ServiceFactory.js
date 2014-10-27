@@ -13,6 +13,7 @@ var services = '../services',
     AccessDataService = require( services + '/AccessDataService' ),
     AccessWebService = require( services + '/AccessWebService'),
     AccessDao = require('../dao/AccessDao' ),
+    ConfigurationDataService = require( services + '/ConfigurationDataService' ),
     ConfigurationDao = require('../dao/ConfigurationDao');
 
 var ServiceFactory = function(options) {
@@ -76,6 +77,28 @@ var ServiceFactory = function(options) {
             opts.dataSourceFactory = factory.createDataSourceFactory();
 
             service = new AccessDataService( opts );
+
+            services[ AccessDataService.SERVICE_NAME ] = service;
+        }
+
+        return service;
+    };
+
+    this.createConfigurationDataService = function() {
+        var service = services[ ConfigurationDataService.SERVICE_NAME ];
+
+        if (!service) {
+            log.info('create configuration data service');
+
+            var opts = dash.clone( options );
+
+            opts.log = createLogger( ConfigurationDataService.SERVICE_NAME );
+            opts.dao = factory.createAccessDao();
+            opts.dataSourceFactory = factory.createDataSourceFactory();
+
+            service = new ConfigurationDataService( opts );
+
+            services[ ConfigurationDataService.SERVICE_NAME ] = service;
         }
 
         return service;
