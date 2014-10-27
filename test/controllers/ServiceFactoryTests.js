@@ -31,6 +31,7 @@ describe('ServiceFactory', function() {
                 'createImageWebService',
                 // dao
                 'createAccessDao',
+                'createConfigurationDao',
                 // inherited
                 'createIndexPageService',
                 'createWebStatusService'

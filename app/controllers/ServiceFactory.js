@@ -12,7 +12,8 @@ var services = '../services',
     DataSourceFactory = require('./DataSourceFactory' ),
     AccessDataService = require( services + '/AccessDataService' ),
     AccessWebService = require( services + '/AccessWebService'),
-    AccessDao = require('../dao/AccessDao');
+    AccessDao = require('../dao/AccessDao' ),
+    ConfigurationDao = require('../dao/ConfigurationDao');
 
 var ServiceFactory = function(options) {
     'use strict';
@@ -106,6 +107,24 @@ var ServiceFactory = function(options) {
             dao = new AccessDao( opts );
 
             services[ AccessDao.DAO_NAME ] = dao;
+        }
+
+        return dao;
+    };
+
+    this.createConfigurationDao = function() {
+        var dao = services[ ConfigurationDao.DAO_NAME ];
+
+        if (!dao) {
+            log.info('create the configuration dao');
+
+            var opts = dash.clone( options );
+            opts.log = createLogger( ConfigurationDao.DAO_NAME );
+            opts.domain = 'Configuration';
+
+            dao = new ConfigurationDao( opts );
+
+            services[ ConfigurationDao.DAO_NAME ] = dao;
         }
 
         return dao;

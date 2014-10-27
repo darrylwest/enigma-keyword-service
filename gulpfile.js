@@ -7,8 +7,9 @@
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     mocha = require('gulp-mocha'),
-    browserify = require('gulp-browserify'),
-    uglify = require('gulp-uglify');
+    plumber = require('gulp-plumber'),
+    gutil = require('gulp-util'),
+    mochaReporter = process.env.reporter || 'nyan'; // dot, spec, progress, tap
 
 var paths = {
     src: 'src/*/*.js',
@@ -16,26 +17,21 @@ var paths = {
     bin: 'bin/*.js'
 };
 
+var errorHandler = function(err) {
+    gutil.beep();
+    console.log( err );
+};
+
 gulp.task('test', function () {
     gulp.src([ paths.src, paths.tests, paths.bin ] )
+        .pipe( plumber({ errorHandler:errorHandler }) )
         .pipe( jshint() )
         .pipe( jshint.reporter('jshint-stylish') );
       
     gulp.src( paths.tests )
-        .pipe( mocha({ reporter:'spec' }) );
+        .pipe( plumber({ errorHandler:errorHandler }) )
+        .pipe( mocha({ reporter:mochaReporter }) );
 });
-
-/**
-gulp.task('build', function () {
-    gulp.src( [ paths.src ] )
-        .pipe(browserify({
-            insertGlobals: true,
-            debug: true
-        }))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist'));
-});
-*/
 
 gulp.task('watch', [ 'test' ], function () {
     gulp.watch([ paths.src, paths.tests ], [ 'test' ]);
