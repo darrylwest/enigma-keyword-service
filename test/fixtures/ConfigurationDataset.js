@@ -28,7 +28,6 @@ var ConfigurationDataset = function() {
         var params = dataset.createBaseModelParams();
 
         params.id = 'test';
-        params.env= 'test';
         params.navigation = {
             appTitle:'My Application',
             links:[
