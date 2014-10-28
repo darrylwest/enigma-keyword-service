@@ -5,7 +5,8 @@
  * @created: 10/27/14 4:18 PM
  */
 var serviceName = 'AccessDataService',
-    AbstractDataService = require('node-service-commons' ).services.AbstractDataService;
+    AbstractDataService = require('node-service-commons' ).services.AbstractDataService,
+    ConfigurationDocument = require('../models/ConfigurationDocument');
 
 var ConfigurationDataService = function(options) {
     'use strict';
@@ -14,7 +15,6 @@ var ConfigurationDataService = function(options) {
         log = options.log,
         dao = options.dao,
         dataSourceFactory = options.dataSourceFactory;
-    // could have a modelDelegate here for validation...
 
     AbstractDataService.extend( this, options );
 
@@ -25,9 +25,11 @@ var ConfigurationDataService = function(options) {
      * @param responseCallback
      */
     this.query = function(params, responseCallback) {
-        log.info('query markup: ', params);
+        log.info('query configuration: ', params);
 
-        responseCallback( null, [] );
+        var client = dataSourceFactory.createRedisClient();
+
+        dao.query( client, params, responseCallback );
     };
 
     /**
@@ -37,9 +39,9 @@ var ConfigurationDataService = function(options) {
      * @param responseCallback
      */
     this.save = function(params, responseCallback) {
-        log.info('save the markup model: ', params);
+        log.info('save the configuration model: ', params);
 
-        var model = params, // new ConfigurationDocument( params ),
+        var model = new ConfigurationDocument( params ),
             errors = service.validate( model ),
             client = dataSourceFactory.createRedisClient();
 
@@ -51,6 +53,7 @@ var ConfigurationDataService = function(options) {
                 dao.insert( client, model, responseCallback );
             }
         } else {
+            log.warn('configuration update rejected: ', errors);
             return responseCallback( new Error( errors.join('; ') ));
         }
     };
@@ -59,6 +62,21 @@ var ConfigurationDataService = function(options) {
         if (!errors) errors = [];
 
         // should have navigation node...
+        if (!model.dateCreated) {
+            model.dateCreated = new Date();
+        }
+
+        if (!model.lastUpdated) {
+            model.lastUpdated = new Date();
+        }
+
+        if (!model.navigation) {
+            errors.push('Configuration must include a navigation node');
+        }
+
+        if (!model.status) {
+            errors.push('Configuration must include a status of active or inactive');
+        }
 
         return errors;
     };
@@ -70,7 +88,7 @@ var ConfigurationDataService = function(options) {
      * @param responseCallback
      */
     this.find = function(id, responseCallback) {
-        log.info('find markup for id: ', id);
+        log.info('find configuration for id: ', id);
         var client = dataSourceFactory.createRedisClient();
 
         dao.findById( client, id, responseCallback );

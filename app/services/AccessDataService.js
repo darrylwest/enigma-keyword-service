@@ -26,9 +26,11 @@ var AccessDataService = function(options) {
      * @param responseCallback
      */
     this.query = function(params, responseCallback) {
-        log.info('query markup: ', params);
+        log.info('query access: ', params);
 
-        responseCallback( null, [] );
+        var client = dataSourceFactory.createRedisClient();
+
+        dao.query( client, params, responseCallback );
     };
 
     /**
@@ -38,7 +40,7 @@ var AccessDataService = function(options) {
      * @param responseCallback
      */
     this.save = function(params, responseCallback) {
-        log.info('save the markup model: ', params);
+        log.info('save the access model: ', params);
 
         var model = new AccessDocument( params ),
             errors = service.validate( model ),
@@ -82,7 +84,7 @@ var AccessDataService = function(options) {
      * @param responseCallback
      */
     this.find = function(id, responseCallback) {
-        log.info('find markup for id: ', id);
+        log.info('find access for id: ', id);
         var client = dataSourceFactory.createRedisClient();
 
         dao.findById( client, id, responseCallback );

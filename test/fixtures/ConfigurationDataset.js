@@ -7,7 +7,8 @@
 
 var dash = require('lodash'),
     casual = require('casual' ),
-    TestDataset = require('node-service-commons').fixtures.TestDataset;
+    TestDataset = require('node-service-commons').fixtures.TestDataset,
+    ConfigurationDocument = require('../../app/models/ConfigurationDocument');
 
 var ConfigurationDataset = function() {
     'use strict';
@@ -18,7 +19,7 @@ var ConfigurationDataset = function() {
 
     // create a markup document object
     this.createModel = function() {
-        var model = dataset.createModelParams() ;
+        var model = new ConfigurationDocument( dataset.createModelParams() );
 
         return model;
     };
@@ -27,6 +28,17 @@ var ConfigurationDataset = function() {
         var params = dataset.createBaseModelParams();
 
         params.id = 'test';
+        params.env= 'test';
+        params.navigation = {
+            appTitle:'My Application',
+            links:[
+                { id:'home', label:'home' },
+                { id:'about', label:'about' },
+                { id:'logout', label:'logout' }
+            ]
+        };
+
+        params.status = 'active';
 
         return params;
     };

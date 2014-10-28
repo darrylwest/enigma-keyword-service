@@ -25,7 +25,8 @@ var ApplicationFactory = function(options) {
         webServiceList = [
             'IndexPageService',
             'WebStatusService',
-            'AccessWebService'
+            'AccessWebService',
+            'ConfigurationWebService'
         ];
 
     AbstractApplicationFactory.extend( this, options );

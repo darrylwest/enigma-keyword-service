@@ -22,19 +22,23 @@ var errorHandler = function(err) {
     console.log( err );
 };
 
-gulp.task('test', function () {
+gulp.task('jshint', function() {
     gulp.src([ paths.src, paths.tests, paths.bin ] )
         .pipe( plumber({ errorHandler:errorHandler }) )
         .pipe( jshint() )
         .pipe( jshint.reporter('jshint-stylish') );
-      
+});
+
+gulp.task('mocha', function() {
     gulp.src( paths.tests )
         .pipe( plumber({ errorHandler:errorHandler }) )
         .pipe( mocha({ reporter:mochaReporter }) );
 });
 
-gulp.task('watch', [ 'test' ], function () {
-    gulp.watch([ paths.src, paths.tests ], [ 'test' ]);
+gulp.task('test', [ 'jshint', 'mocha' ]);
+
+gulp.task('watch', [ 'test' ], function() {
+    gulp.watch( [ paths.src, paths.tests, paths.bin ], [ 'test' ] );
 });
 
 gulp.task('default', ['test', 'watch']);
