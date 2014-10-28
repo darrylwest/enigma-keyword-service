@@ -12,7 +12,7 @@ var app = '../../app',
     dash = require('lodash' ),
     AbstractApplicationFactory = require( 'node-service-commons' ).controllers.AbstractApplicationFactory,
     BootStrap = require( 'node-service-commons' ).controllers.CommonBootStrap,
-    LogManager = require('simple-node-logger' ),
+    // LogManager = require('simple-node-logger' ),
     Config = require('./config' ),
     ServiceFactory = require('./ServiceFactory');
 

@@ -1,5 +1,5 @@
 /**
- *
+ * @class ConfigurationDataServiceTests
  *
  * @author: darryl.west@roundpeg.com
  * @created: 10/27/14 4:30 PM
@@ -70,7 +70,7 @@ describe('ConfigurationDataService', function() {
                 should.not.exist( err );
                 should.exist( model );
 
-                console.log( model );
+                // console.log( model );
 
                 model.dateCreated.getTime().should.be.below( model.lastUpdated.getTime() );
 

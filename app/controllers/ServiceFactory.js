@@ -13,6 +13,8 @@ var services = '../services',
     AccessDataService = require( services + '/AccessDataService' ),
     AccessWebService = require( services + '/AccessWebService'),
     AccessDao = require('../dao/AccessDao' ),
+    SessionDataService = require( services + '/SessionDataService' ),
+    SessionDao = require('../dao/SessionDao' ),
     ConfigurationWebService = require( services + '/ConfigurationWebService' ),
     ConfigurationDataService = require( services + '/ConfigurationDataService' ),
     ConfigurationDao = require('../dao/ConfigurationDao');
@@ -85,6 +87,26 @@ var ServiceFactory = function(options) {
         return service;
     };
 
+    this.createSessionDataService = function() {
+        var service = services[ SessionDataService.SERVICE_NAME ];
+
+        if (!service) {
+            log.info('create session data service');
+
+            var opts = dash.clone( options );
+
+            opts.log = createLogger( SessionDataService.SERVICE_NAME );
+            opts.dao = factory.createAccessDao();
+            opts.dataSourceFactory = factory.createDataSourceFactory();
+
+            service = new SessionDataService( opts );
+
+            services[ SessionDataService.SERVICE_NAME ] = service;
+        }
+
+        return service;
+    };
+
     this.createConfigurationWebService = function() {
         var service = services[ ConfigurationWebService.SERVICE_NAME ];
 
@@ -138,6 +160,24 @@ var ServiceFactory = function(options) {
         }
 
         return service;
+    };
+
+    this.createSessionDao = function() {
+        var dao = services[ SessionDao.DAO_NAME ];
+
+        if (!dao) {
+            log.info('create the session dao');
+
+            var opts = dash.clone( options );
+            opts.log = createLogger( SessionDao.DAO_NAME );
+            opts.domain = 'Session';
+
+            dao = new SessionDao( opts );
+
+            services[ SessionDao.DAO_NAME ] = dao;
+        }
+
+        return dao;
     };
 
     // move this to a DaoFactory ?

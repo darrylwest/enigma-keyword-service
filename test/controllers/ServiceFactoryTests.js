@@ -28,11 +28,13 @@ describe('ServiceFactory', function() {
                 'createDataSourceFactory',
                 'createAccessWebService',
                 'createAccessDataService',
+                'createSessionDataService',
                 'createConfigurationWebService',
                 'createConfigurationDataService',
                 'createImageWebService',
                 // dao
                 'createAccessDao',
+                'createSessionDao',
                 'createConfigurationDao',
                 // inherited
                 'createIndexPageService',

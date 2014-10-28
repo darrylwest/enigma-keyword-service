@@ -1,20 +1,21 @@
 /**
- * @class AccessDataServiceTests
+ * @class SessionDataServiceTests
  *
- * @author: darryl.west@raincitysoftware.com
- * @created: 8/12/14 3:27 PM
+ * @author: darryl.west@roundpeg.com
+ * @created: 10/28/14 7:32 AM
  */
 var should = require('chai').should(),
     dash = require('lodash' ),
-    Dataset = require('../fixtures/AccessDataset' ),
+    Dataset = require('../fixtures/ConfigurationDataset' ),
     MockServiceFactory = require('../mocks/MockServiceFactory' ),
-    AccessDataService = require('../../app/services/AccessDataService' );
+    SessionDataService = require('../../app/services/SessionDataService' ),
+    SessionDocument = require('../../app/models/SessionDocument');
 
-describe('AccessDataService', function() {
+describe('SessionDataService', function() {
     'use strict';
 
     describe('#instance', function() {
-        var service = MockServiceFactory.createInstance().createAccessDataService(),
+        var service = MockServiceFactory.createInstance().createSessionDataService(),
             methods = [
                 'query',
                 'find',
@@ -24,9 +25,9 @@ describe('AccessDataService', function() {
                 'parseInt'
             ];
 
-        it('should create an instance of AccessDataService', function() {
+        it('should create an instance of SessionDataService', function() {
             should.exist( service );
-            service.should.be.instanceof( AccessDataService );
+            service.should.be.instanceof( SessionDataService );
         });
 
         it('should have all known methods by size and type', function() {
@@ -38,19 +39,21 @@ describe('AccessDataService', function() {
     });
 
     describe('save', function() {
-        var service = MockServiceFactory.createInstance().createAccessDataService(),
+        var service = MockServiceFactory.createInstance().createSessionDataService(),
             dataset = new Dataset();
 
-        it('should save a new access document', function(done) {
+        it('should save a new session document', function(done) {
             var ref = dataset.createModel();
 
-            ref.id = null;
-            ref.dateCreated = null;
-            ref.lastUpdated = null;
+            ref.id = ref.dateCreated = ref.lastUpdated = null;
 
             var callback = function(err, model) {
                 should.not.exist( err );
                 should.exist( model );
+
+                should.exist( model.id );
+                should.exist( model.dateCreated );
+                should.exist( model.lastUpdated );
 
                 done();
             };
@@ -58,12 +61,18 @@ describe('AccessDataService', function() {
             service.save( ref, callback );
         });
 
-        it('should update an existing access document', function(done) {
+        it('should update an existing session document', function(done) {
             var ref = dataset.createModel();
+
+            ref.dateCreated = ref.lastUpdated = new Date( Date.now() - 60000 );
 
             var callback = function(err, model) {
                 should.not.exist( err );
                 should.exist( model );
+
+                // console.log( model );
+
+                model.dateCreated.getTime().should.be.below( model.lastUpdated.getTime() );
 
                 done();
             };
@@ -73,11 +82,12 @@ describe('AccessDataService', function() {
 
         it('should reject a non-valid document', function() {
             var model = dataset.createModel(),
-                errors = [];
+                errors = service.validate( model );
 
-            model.topic = null;
+            errors.length.should.equal( 0 );
 
-            service.validate( model, errors );
+            model.status = null;
+            errors = service.validate( model );
 
             errors.length.should.equal( 1 );
         });
