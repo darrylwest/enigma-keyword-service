@@ -7,8 +7,8 @@
 var exec = require('child_process').exec,
     configFile = process.cwd() + '/app-config.json',
     conf = require( configFile ),
-    cmd = "curl -H 'x-api-key:" + conf.appkey + "' -X GET http://localhost:" + conf.port + conf.baseURI + "/configuration/query";
-
+    resource = '/session', // '/configuration',
+    cmd = "curl -H 'x-api-key:" + conf.appkey + "' -X GET http://localhost:" + conf.port + conf.baseURI + resource + "/query";
 
 console.log( cmd );
 

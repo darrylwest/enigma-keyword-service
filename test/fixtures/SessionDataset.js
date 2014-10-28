@@ -26,10 +26,10 @@ var SessionDataset = function() {
     this.createModelParams = function() {
         var params = dataset.createBaseModelParams();
 
-        params.userId = dataset.createModelId();
+        params.userCode = 'ilibweas';
         params.challengeCode = dash.random(100000000, 9000000000).toString(19).replace('i', 'y');
 
-        params.status = 'pending'; // active
+        params.status = 'request'; // pending, active
 
         return params;
     };

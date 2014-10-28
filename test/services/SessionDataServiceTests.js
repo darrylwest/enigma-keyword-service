@@ -21,6 +21,7 @@ describe('SessionDataService', function() {
                 'find',
                 'save',
                 'validate',
+                'createChallengeCode',
                 // inherited
                 'parseInt'
             ];
@@ -43,17 +44,17 @@ describe('SessionDataService', function() {
             dataset = new Dataset();
 
         it('should save a new session document', function(done) {
-            var ref = dataset.createModel();
-
-            ref.id = ref.dateCreated = ref.lastUpdated = null;
+            var ref = {
+                userCode:'ifkdl344',
+                status:'request'
+            };
 
             var callback = function(err, model) {
                 should.not.exist( err );
                 should.exist( model );
 
                 should.exist( model.id );
-                should.exist( model.dateCreated );
-                should.exist( model.lastUpdated );
+                should.exist( model.status );
 
                 done();
             };
@@ -72,8 +73,6 @@ describe('SessionDataService', function() {
 
                 // console.log( model );
 
-                model.dateCreated.getTime().should.be.below( model.lastUpdated.getTime() );
-
                 done();
             };
 
@@ -90,6 +89,12 @@ describe('SessionDataService', function() {
             errors = service.validate( model );
 
             errors.length.should.equal( 1 );
+        });
+
+        it('should create a unique challenge code', function() {
+            var code = service.createChallengeCode();
+
+            should.exist( code );
         });
     });
 });

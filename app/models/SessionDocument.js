@@ -14,7 +14,7 @@ var SessionDocument = function(params) {
 
     AbstractBaseModel.extend( this, params );
 
-    this.userId = params.userId;
+    this.userCode = params.userCode;
     this.challengeCode = params.challengeCode;
 
     this.status = params.status;

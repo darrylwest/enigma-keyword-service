@@ -6,7 +6,8 @@
  */
 var serviceName = 'SessionDataService',
     AbstractDataService = require('node-service-commons' ).services.AbstractDataService,
-    SessionDocument = require('../models/SessionDocument');
+    SessionDocument = require('../models/SessionDocument' ),
+    dash = require('lodash');
 
 var SessionDataService = function(options) {
     'use strict';
@@ -43,29 +44,57 @@ var SessionDataService = function(options) {
 
         var model = new SessionDocument( params ),
             errors = service.validate( model ),
-            client = dataSourceFactory.createRedisClient();
+            client = dataSourceFactory.createRedisClient(),
+            completeCallback;
+
+        completeCallback = function(err, session) {
+            var obj = {};
+
+            obj.id = session.id;
+            obj.status = session.status;
+
+            return responseCallback( err, obj );
+        };
 
         // validate the model
         if (errors.length === 0) {
             if (model.id) {
-                dao.update( client, model, responseCallback );
+                // insure that the challenge matches the request
+                return dao.update( client, model, completeCallback );
             } else {
-                dao.insert( client, model, responseCallback );
+                // check for correct status = request
+                if (model.status === 'request') {
+                    model.status = 'pending';
+                    model.challengeCode = service.createChallengeCode();
+
+                    return dao.insert( client, model, completeCallback );
+                }
             }
-        } else {
-            log.warn('configuration update rejected: ', errors);
-            return responseCallback( new Error( errors.join('; ') ));
+
+            errors.push('malformed session request');
         }
+
+        log.warn('configuration update rejected: ', errors);
+        return responseCallback( new Error( errors.join('; ') ));
     };
 
     this.validate = function(model, errors) {
         if (!errors) errors = [];
 
         if (!model.status) {
-            errors.push('Configuration must include a status of active or inactive');
+            errors.push('Session must include a status of request, pending, etc.');
         }
 
         return errors;
+    };
+
+    this.createChallengeCode = function() {
+        var n = 100000000,
+            code = Math.round(Math.random() * n + n ).toString( 19 ).replace('i', 'r');
+
+        log.info('challenge code: ', code);
+
+        return code;
     };
 
     /**

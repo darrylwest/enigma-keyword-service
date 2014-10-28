@@ -8,6 +8,20 @@ var exec = require('child_process').exec,
     configFile = process.cwd() + '/app-config.json',
     conf = require( configFile );
 
+var saveSession = function() {
+    var resource = '/session',
+        model = {
+            userCode:'54ss43',
+            status:'request'
+        },
+        data = "-d '" + JSON.stringify( model ) + "' ",
+        cmd = "curl " + data + " -H 'Content-Type: application/json' -H 'x-api-key:" + conf.appkey + "' -X POST http://localhost:" + conf.port + conf.baseURI + resource + "/save";
+
+    console.log( cmd );
+
+    return cmd;
+};
+
 var saveConfiguration = function() {
     var resource = '/configuration',
         model = {
@@ -30,7 +44,7 @@ var saveConfiguration = function() {
     return cmd;
 };
 
-exec( saveConfiguration(), function(err, stdout, stderr ) {
+exec( saveSession(), function(err, stdout, stderr ) {
     if (err) {
         console.log( err );
     } else {

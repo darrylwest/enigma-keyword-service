@@ -26,6 +26,7 @@ var ApplicationFactory = function(options) {
             'IndexPageService',
             'WebStatusService',
             'AccessWebService',
+            'SessionWebService',
             'ConfigurationWebService'
         ];
 

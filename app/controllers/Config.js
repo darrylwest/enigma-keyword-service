@@ -48,6 +48,15 @@ Config.development = function(opts) {
     var config = new Config( opts );
     config.includeXAPIKey = false;
 
+    // setup for external logging
+    config.readLoggerConfig = function() {
+        var opts = externalConfig.logging;
+
+        opts.logDirectory = process.env.HOME + '/logs';
+
+        return opts;
+    };
+
     return config;
 };
 
