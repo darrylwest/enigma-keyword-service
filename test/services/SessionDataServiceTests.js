@@ -6,7 +6,7 @@
  */
 var should = require('chai').should(),
     dash = require('lodash' ),
-    Dataset = require('../fixtures/ConfigurationDataset' ),
+    Dataset = require('../fixtures/SessionDataset' ),
     MockServiceFactory = require('../mocks/MockServiceFactory' ),
     SessionDataService = require('../../app/services/SessionDataService' ),
     SessionDocument = require('../../app/models/SessionDocument');
@@ -83,11 +83,13 @@ describe('SessionDataService', function() {
             var model = dataset.createModel(),
                 errors = service.validate( model );
 
+            console.log( errors );
             errors.length.should.equal( 0 );
 
             model.status = null;
             errors = service.validate( model );
 
+            console.log( errors );
             errors.length.should.equal( 1 );
         });
 

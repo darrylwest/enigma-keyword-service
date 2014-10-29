@@ -17,7 +17,7 @@ var SessionDocument = function(params) {
     this.userCode = params.userCode;
     this.challengeCode = params.challengeCode;
 
-    this.status = params.status;
+    this.status = params.status;  // pending, active, expired
 };
 
 module.exports = SessionDocument;

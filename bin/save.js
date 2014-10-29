@@ -44,7 +44,7 @@ var saveConfiguration = function() {
     return cmd;
 };
 
-exec( saveSession(), function(err, stdout, stderr ) {
+exec( saveConfiguration(), function(err, stdout, stderr ) {
     if (err) {
         console.log( err );
     } else {

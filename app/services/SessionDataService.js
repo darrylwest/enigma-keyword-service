@@ -62,10 +62,14 @@ var SessionDataService = function(options) {
                 // insure that the challenge matches the request
                 return dao.update( client, model, completeCallback );
             } else {
+                // find the user from code
+
                 // check for correct status = request
                 if (model.status === 'request') {
                     model.status = 'pending';
                     model.challengeCode = service.createChallengeCode();
+
+                    // send the challenge code to the user's SMS
 
                     return dao.insert( client, model, completeCallback );
                 }
@@ -81,8 +85,12 @@ var SessionDataService = function(options) {
     this.validate = function(model, errors) {
         if (!errors) errors = [];
 
+        if (!model.userCode) {
+            errors.push('Session must include a user code');
+        }
+
         if (!model.status) {
-            errors.push('Session must include a status of request, pending, etc.');
+            errors.push('Session must include a valid status code');
         }
 
         return errors;
