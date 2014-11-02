@@ -17,6 +17,36 @@ var SessionDao = function(options) {
     AbstractBaseDao.extend( this, options );
 
     // TODO override query, findById, insert and update with concrete methods
+
+    this.findByUserCode = function(client, code, callback) {
+        log.info('find session by code: ', code);
+
+        var keysCallback = function(err, keys) {
+            if (err) {
+                log.error( err );
+                return callback( err );
+            }
+
+            var loopCallback = function(err, model) {
+                if (!err && model && model.userCode === code) {
+                    return callback( model );
+                }
+
+                var key = keys.pop();
+
+                if (key) {
+                    dao.findById( client, key, loopCallback );
+                } else {
+                    return callback( err );
+                }
+            };
+
+            // start the keys loop
+            loopCallback();
+        };
+
+        client.keys( dao.createDomainKey( '*' ), keysCallback );
+    };
 };
 
 SessionDao.DAO_NAME = 'SessionDao';

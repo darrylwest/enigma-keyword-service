@@ -28,13 +28,12 @@ var SessionDataService = function(options) {
     this.query = function(params, responseCallback) {
         log.info('query session: ', params);
 
-        var client = dataSourceFactory.createRedisClient();
-
-        dao.query( client, params, responseCallback );
+        // always return an empty set...
+        return responseCallback(null, []);
     };
 
     /**
-     * override to implement; this method is invoked from web service to insert, update or delete a model
+     * save will trigger a new session when the user code is recognized;
      *
      * @param params
      * @param responseCallback
@@ -47,6 +46,7 @@ var SessionDataService = function(options) {
             client = dataSourceFactory.createRedisClient(),
             completeCallback;
 
+        // return only the session id and status or error
         completeCallback = function(err, session) {
             var obj = {};
 
@@ -60,13 +60,15 @@ var SessionDataService = function(options) {
         if (errors.length === 0) {
             if (model.id) {
                 // insure that the challenge matches the request
+                // save a new salt or user code
                 return dao.update( client, model, completeCallback );
             } else {
-                // find the user from code
-
                 // check for correct status = request
                 if (model.status === 'request') {
                     model.status = 'pending';
+
+                    // find the user from user code
+
                     model.challengeCode = service.createChallengeCode();
 
                     // send the challenge code to the user's SMS

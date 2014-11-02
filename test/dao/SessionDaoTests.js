@@ -18,6 +18,7 @@ describe('SessionDao', function() {
     describe('#instance', function() {
         var dao = MockServiceFactory.createInstance().createSessionDao(),
             methods = [
+                'findByUserCode',
                 // inherited
                 'createModelId',
                 'createDomainKey',

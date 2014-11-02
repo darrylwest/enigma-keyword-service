@@ -10,7 +10,7 @@ test:
 	@( gulp test )
 
 watch:
-	@( gulp )
+	@( gulp watch )
 
 docs:
 	@( gulp jsdoc )
