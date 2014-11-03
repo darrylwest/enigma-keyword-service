@@ -19,9 +19,9 @@ var AccessDocument = function(params) {
     this.title = params.title;
     this.content = params.content;
 
-    this.encryption = params.encryption || 'none'; // none, blowfish, aes, etc
+    this.encryption = params.encryption || 'aes-256-cbc'; // none, blowfish, aes, etc
 
-    this.status = params.status;
+    this.status = params.status;  // active, inactive
 };
 
 module.exports = AccessDocument;
