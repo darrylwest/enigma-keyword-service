@@ -11,7 +11,7 @@ var exec = require('child_process').exec,
 var saveSession = function() {
     var resource = '/session',
         model = {
-            userCode:'54ss43',
+            userCode:'ca1c5-0f+UC',
             status:'request'
         },
         data = "-d '" + JSON.stringify( model ) + "' ",
@@ -44,7 +44,7 @@ var saveConfiguration = function() {
     return cmd;
 };
 
-exec( saveConfiguration(), function(err, stdout, stderr ) {
+exec( saveSession(), function(err, stdout, stderr ) {
     if (err) {
         console.log( err );
     } else {
