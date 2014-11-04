@@ -37,6 +37,8 @@ var Config = function(options) {
     this.baseURI = externalConfig.baseURI;
     this.port = externalConfig.port;
     this.messageServiceURL = 'http://localhost:29163/enigma';
+
+    this.keyfile = process.env.HOME + externalConfig.keyfile;
 };
 
 Config.development = function(opts) {

@@ -17,7 +17,9 @@ describe('DataSourceFactory', function() {
         var opts = {};
 
         opts.log = MockLogger.createLogger( 'DataSourceFactory' );
+        opts.createLogger = MockLogger.createLogger;
         opts.redis = MockRedisClient.createMockRedis();
+        opts.keyfile = process.env.HOME + '/.ssh/keys.enc';
 
         return opts;
     };
@@ -25,7 +27,8 @@ describe('DataSourceFactory', function() {
     describe('#instance', function() {
         var factory = new DataSourceFactory( createOptions() ),
             methods = [
-                'createRedisClient'
+                'createRedisClient',
+                'createSESMailer'
             ];
 
         it('should create an instance of MarkupDataService', function() {

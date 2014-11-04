@@ -5,6 +5,7 @@
  * @created: 8/12/14 4:23 PM
  */
 var MockLogger = require('simple-node-logger').mocks.MockLogger,
+    MockSESMailer = require('aws-commons' ).mocks.MockSESMailer,
     MockRedisClient = require('mock-redis-client' ),
     Config = require('../../app/controllers/Config' ),
     DataSourceFactory = require('../../app/controllers/DataSourceFactory' ),
@@ -21,6 +22,7 @@ MockServiceFactory.createInstance = function() {
     opts.createLogger = MockLogger.createLogger;
 
     opts.redis = MockRedisClient.createMockRedis();
+    opts.mailer = MockSESMailer.createInstance();
 
     opts.dataSourceFactory = new DataSourceFactory( opts );
 

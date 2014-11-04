@@ -15,7 +15,8 @@ var SessionDataService = function(options) {
     var service = this,
         log = options.log,
         dao = options.dao,
-        dataSourceFactory = options.dataSourceFactory;
+        dataSourceFactory = options.dataSourceFactory,
+        smsurl = options.smsurl || 'messaging.sprintpcs.com';
 
     AbstractDataService.extend( this, options );
 
@@ -95,9 +96,29 @@ var SessionDataService = function(options) {
         }
     };
 
-    this.sendChallenge = function(model) {
-        log.info('send challenge: ', model.challengeCode, ' to sms: ', model.sms);
+    this.sendChallenge = function(session) {
+        var url = session.sms + '@' + smsurl,
+            mailer = dataSourceFactory.createSESMailer(),
+            model = mailer.createEMailModel();
 
+        log.info('send challenge: ', session.challengeCode, ' to sms: ', url);
+
+        model.setSource('support@raincitysoftware.com');
+        model.setToAddress( url );
+        model.setFrom( 'support@raincitysoftware.com' );
+        model.setSubject('challenge code');
+        model.setBody( session.challengeCode );
+
+        mailer.send( model.createParams(), function(err, response) {
+            if (err) {
+                log.error( err );
+            } else {
+                log.info( response );
+            }
+        });
+
+
+        return model;
     };
 
     this.validate = function(model, errors) {
@@ -116,7 +137,7 @@ var SessionDataService = function(options) {
 
     this.createChallengeCode = function() {
         var n = 100000000,
-            code = Math.round(Math.random() * n + n ).toString( 19 ).replace('i', 'r');
+            code = Math.round(Math.random() * n + (Math.random() * 10) * n ).toString( 19 ).replace('i', 'r');
 
         log.info('challenge code: ', code);
 
