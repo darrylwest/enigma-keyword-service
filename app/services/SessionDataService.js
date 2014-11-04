@@ -44,14 +44,18 @@ var SessionDataService = function(options) {
         var model = new SessionDocument( params ),
             errors = service.validate( model ),
             client = dataSourceFactory.createRedisClient(),
-            completeCallback;
+            completeCallback,
+            findCallback;
 
         // return only the session id and status or error
         completeCallback = function(err, session) {
             var obj = {};
 
-            obj.id = session.id;
-            obj.status = session.status;
+            if (err) {
+                log.error( err );
+            } else if (session) {
+                obj.status = session.status;
+            }
 
             return responseCallback( err, obj );
         };
@@ -62,26 +66,38 @@ var SessionDataService = function(options) {
                 // insure that the challenge matches the request
                 // save a new salt or user code
                 return dao.update( client, model, completeCallback );
-            } else {
-                // check for correct status = request
-                if (model.status === 'request') {
-                    model.status = 'pending';
+            } else if (model.status === 'request') {
+                findCallback = function(err, model) {
+                    if (err) {
+                        log.error( err );
+                        responseCallback( err );
+                    } else if (!model) {
+                        err = new Error('session not found for given code...');
+                        log.error( err );
+                        responseCallback( err );
+                    } else {
+                        model.challengeCode = service.createChallengeCode();
 
-                    // find the user from user code
+                        service.sendChallenge( model );
 
-                    model.challengeCode = service.createChallengeCode();
+                        // update the challenge code and access time
+                        dao.update( client, model, completeCallback );
+                    }
+                };
 
-                    // send the challenge code to the user's SMS
-
-                    return dao.insert( client, model, completeCallback );
-                }
+                // find the user from user code
+                dao.findByUserCode( client, model.userCode, findCallback );
             }
 
-            errors.push('malformed session request');
+        } else {
+            log.warn('configuration update rejected: ', errors);
+            return responseCallback( new Error( errors.join('; ') ));
         }
+    };
 
-        log.warn('configuration update rejected: ', errors);
-        return responseCallback( new Error( errors.join('; ') ));
+    this.sendChallenge = function(model) {
+        log.info('send challenge: ', model.challengeCode, ' to sms: ', model.sms);
+
     };
 
     this.validate = function(model, errors) {
@@ -117,7 +133,22 @@ var SessionDataService = function(options) {
         log.info('find configuration for id: ', id);
         var client = dataSourceFactory.createRedisClient();
 
-        dao.findById( client, id, responseCallback );
+        var callback = function(err, model) {
+            var obj;
+            if (err) {
+                log.error( err );
+            } else if (model) {
+                obj = {};
+
+                [ 'id', 'dateCreated', 'lastUpdated', 'version', 'salt' ].forEach(function(p) {
+                    obj[ p ] = model[ p ];
+                });
+            }
+
+            return responseCallback( err, obj );
+        };
+
+        dao.findById( client, id, callback );
     };
 
     // constructor validations

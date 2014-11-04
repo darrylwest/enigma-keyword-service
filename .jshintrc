@@ -28,6 +28,7 @@
     "globals": {
         "describe":true,
         "it":true,
-        "beforeEach":true
+        "beforeEach":true,
+        "before":true
     }
 }

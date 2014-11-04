@@ -111,7 +111,7 @@ var updateDatabase = function() {
     };
 
     runner = new JobRunner([ readData, createPassword, decrypt, writeToDb ]);
-    runner.next()
+    runner.next();
 };
 
 var bootup = function() {

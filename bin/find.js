@@ -8,7 +8,7 @@ var exec = require('child_process').exec,
     configFile = process.cwd() + '/app-config.json',
     conf = require( configFile ),
     resource = '/session', // '/configuration',
-    id = '7a8bc2ac66c942c7b360b59c722d11de', // 'development',
+    id = '3b2d160462bc11e4b963dfb8868d85da', // 'development',
     cmd = "curl -H 'x-api-key:" + conf.appkey + "' -X GET http://localhost:" + conf.port + conf.baseURI + resource + "/find/" + id;
 
 console.log( cmd );

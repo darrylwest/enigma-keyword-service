@@ -30,7 +30,7 @@ var SessionDataset = function() {
         params.challengeCode = dash.random(100000000, 9000000000).toString(19).replace('i', 'y');
         params.salt = new Buffer( [ 87,155,84,192,2,103,34,19 ] );
 
-        params.status = 'request'; // pending, active
+        params.status = 'active'; // pending, active
 
         return params;
     };

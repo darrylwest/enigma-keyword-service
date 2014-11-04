@@ -12,7 +12,7 @@ var gulp = require('gulp'),
     mochaReporter = process.env.reporter || 'nyan'; // dot, spec, progress, tap
 
 var paths = {
-    src: 'src/*/*.js',
+    src: 'app/*/*.js',
     tests: 'test/*/*.js',
     bin: 'bin/*.js'
 };
@@ -38,8 +38,8 @@ gulp.task('mocha', function() {
 gulp.task('test', [ 'jshint', 'mocha' ]);
 
 gulp.task('watch', [ 'test' ], function() {
-    gulp.watch( [ paths.src, paths.tests, paths.bin ], [ 'test' ] );
+    gulp.watch( [ paths.src, paths.tests, paths.bin ], [ 'jshint', 'mocha' ] );
 });
 
-gulp.task('default', ['test', 'watch']);
+gulp.task('default', [ 'watch' ]);
 

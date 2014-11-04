@@ -24,9 +24,13 @@ MockServiceFactory.createInstance = function() {
 
     opts.dataSourceFactory = new DataSourceFactory( opts );
 
-    // set the mock redis
+    var factory = new ServiceFactory( opts );
 
-    return new ServiceFactory( opts );
+    factory.getDataSourceFactory = function() {
+        return opts.dataSourceFactory;
+    };
+
+    return factory;
 };
 
 module.exports = MockServiceFactory;

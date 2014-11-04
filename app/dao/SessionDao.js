@@ -16,8 +16,6 @@ var SessionDao = function(options) {
 
     AbstractBaseDao.extend( this, options );
 
-    // TODO override query, findById, insert and update with concrete methods
-
     this.findByUserCode = function(client, code, callback) {
         log.info('find session by code: ', code);
 
@@ -29,7 +27,7 @@ var SessionDao = function(options) {
 
             var loopCallback = function(err, model) {
                 if (!err && model && model.userCode === code) {
-                    return callback( model );
+                    return callback( err, model );
                 }
 
                 var key = keys.pop();

@@ -22,6 +22,7 @@ describe('SessionDataService', function() {
                 'save',
                 'validate',
                 'createChallengeCode',
+                'sendChallenge',
                 // inherited
                 'parseInt'
             ];
@@ -40,12 +41,33 @@ describe('SessionDataService', function() {
     });
 
     describe('save', function() {
-        var service = MockServiceFactory.createInstance().createSessionDataService(),
-            dataset = new Dataset();
+        var factory = MockServiceFactory.createInstance(),
+            service = factory.createSessionDataService(),
+            dataset = new Dataset(),
+            session = dataset.createModel();
+
+        before(function(done) {
+            var dao = factory.createSessionDao(),
+                client = factory.getDataSourceFactory().createRedisClient(),
+                callback;
+
+            callback = function(err, model) {
+                if (err) throw err;
+
+                if (!model) {
+                    console.log('should have a model...');
+                }
+
+                done();
+            };
+
+            dao.insert( client, session, callback );
+        });
 
         it('should save a new session document', function(done) {
             var ref = {
-                userCode:'ifkdl344',
+                userCode:session.userCode,
+                flarg:'thing',
                 status:'request'
             };
 
@@ -53,7 +75,9 @@ describe('SessionDataService', function() {
                 should.not.exist( err );
                 should.exist( model );
 
-                should.exist( model.id );
+                should.not.exist( model.id );
+                should.not.exist( model.salt );
+                should.not.exist( model.userCode );
                 should.exist( model.status );
 
                 done();
@@ -83,13 +107,13 @@ describe('SessionDataService', function() {
             var model = dataset.createModel(),
                 errors = service.validate( model );
 
-            console.log( errors );
+            // console.log( errors );
             errors.length.should.equal( 0 );
 
             model.status = null;
             errors = service.validate( model );
 
-            console.log( errors );
+            // console.log( errors );
             errors.length.should.equal( 1 );
         });
 
