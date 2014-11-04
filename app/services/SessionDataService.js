@@ -166,7 +166,6 @@ var SessionDataService = function(options) {
 
         log.info('send challenge: ', session.challengeCode, ' to sms: ', url);
 
-        model.setSource('support@raincitysoftware.com');
         model.setToAddress( url );
         model.setFrom( 'support@raincitysoftware.com' );
         model.setSubject('challenge code');
