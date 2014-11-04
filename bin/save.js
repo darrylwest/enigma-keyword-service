@@ -6,16 +6,26 @@
 
 var exec = require('child_process').exec,
     configFile = process.cwd() + '/app-config.json',
-    conf = require( configFile );
+    conf = require( configFile ),
+    crypto = require('crypto');
 
 var saveSession = function() {
     var resource = '/session',
+        hmac = crypto.createHmac( "sha512", new Buffer( conf.pepper )),
+        code = 'ca1c5-0f+UC',
         model = {
-            userCode:'ca1c5-0f+UC',
+            userCode:"",
             status:'request'
         },
-        data = "-d '" + JSON.stringify( model ) + "' ",
-        cmd = "curl " + data + " -H 'Content-Type: application/json' -H 'x-api-key:" + conf.appkey + "' -X POST http://localhost:" + conf.port + conf.baseURI + resource + "/save";
+        data,
+        cmd;
+
+    hmac.update( code );
+    model.userCode = hmac.digest('hex');
+    console.log( model );
+
+    data = "-d '" + JSON.stringify( model ) + "' ";
+    cmd = "curl " + data + " -H 'Content-Type: application/json' -H 'x-api-key:" + conf.appkey + "' -X POST http://localhost:" + conf.port + conf.baseURI + resource + "/save";
 
     console.log( cmd );
 

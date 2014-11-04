@@ -19,6 +19,7 @@ describe('SessionDao', function() {
         var dao = MockServiceFactory.createInstance().createSessionDao(),
             methods = [
                 'findByUserCode',
+                'createHash',
                 // inherited
                 'createModelId',
                 'createDomainKey',
@@ -39,6 +40,18 @@ describe('SessionDao', function() {
             methods.forEach(function(method) {
                 dao[ method ].should.be.a( 'function' );
             });
+        });
+    });
+
+    describe('createHash', function() {
+        var dao = MockServiceFactory.createInstance().createSessionDao();
+
+        it('should create a known hash code', function() {
+            var code = '123456789',
+                hcode = dao.createHash( code );
+
+            // console.log( hcode );
+            hcode.should.equal( 'd227828a4af115fcf7af21cd73d3642509525a2ebe0e1aad73d5a161f193176aff185912707bb2d92e629cfbe57682146705a0cd2bea9414106c2d6c3e6fb5a8' );
         });
     });
 });

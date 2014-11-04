@@ -39,6 +39,8 @@ var Config = function(options) {
     this.messageServiceURL = 'http://localhost:29163/enigma';
 
     this.keyfile = process.env.HOME + externalConfig.keyfile;
+    this.smsurl = externalConfig.smsurl;
+    this.pepper = externalConfig.pepper;
 };
 
 Config.development = function(opts) {

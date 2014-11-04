@@ -5,6 +5,7 @@
     "appkey":"f804069e-472c-11e4-8207-0b0c205e8f2a",
     "baseURI":"/EnigmaService",
     "port":15061,
+    "pepper":[253,12,221,80,145,117,212,214],
     "logging":{
         "fileNamePattern":"enigma-service-<date>.log",
         "dateFormat":"YYYY-MM-DD",

@@ -7,7 +7,8 @@
 var serviceName = 'SessionDataService',
     AbstractDataService = require('node-service-commons' ).services.AbstractDataService,
     SessionDocument = require('../models/SessionDocument' ),
-    dash = require('lodash');
+    dash = require('lodash' ),
+    uuid = require('node-uuid');
 
 var SessionDataService = function(options) {
     'use strict';
@@ -44,7 +45,32 @@ var SessionDataService = function(options) {
 
         var model = new SessionDocument( params ),
             errors = service.validate( model ),
-            client = dataSourceFactory.createRedisClient(),
+            client,
+            completeCallback,
+            findCallback;
+
+        // validate the model
+        if (errors.length === 0) {
+            if (model.id) {
+                // add update validation
+                client = dataSourceFactory.createRedisClient();
+
+                // save a new salt or user code
+                return dao.update( client, model, responseCallback );
+            } else if (model.status === 'request') {
+                this.processSessionRequest(model, responseCallback );
+            } else if (model.status === 'challenge') {
+                this.processChallengeResponse(model, responseCallback );
+            }
+        } else {
+            log.warn('configuration update rejected: ', errors);
+            return responseCallback( new Error( errors.join('; ') ));
+        }
+    };
+
+    this.processSessionRequest = function(model, responseCallback) {
+        log.info('process the session request');
+        var client = dataSourceFactory.createRedisClient(),
             completeCallback,
             findCallback;
 
@@ -61,39 +87,76 @@ var SessionDataService = function(options) {
             return responseCallback( err, obj );
         };
 
-        // validate the model
-        if (errors.length === 0) {
-            if (model.id) {
-                // insure that the challenge matches the request
-                // save a new salt or user code
-                return dao.update( client, model, completeCallback );
-            } else if (model.status === 'request') {
-                findCallback = function(err, model) {
-                    if (err) {
-                        log.error( err );
-                        responseCallback( err );
-                    } else if (!model) {
-                        err = new Error('session not found for given code...');
-                        log.error( err );
-                        responseCallback( err );
-                    } else {
-                        model.challengeCode = service.createChallengeCode();
+        findCallback = function(err, model) {
+            if (err) {
+                log.error( err );
+                responseCallback( err );
+            } else if (!model) {
+                err = new Error('session not found for given code...');
+                log.error( err );
+                responseCallback( err );
+            } else {
+                model.challengeCode = service.createChallengeCode();
 
-                        service.sendChallenge( model );
+                service.sendChallenge( model );
 
-                        // update the challenge code and access time
-                        dao.update( client, model, completeCallback );
-                    }
-                };
+                // update the challenge code and access time
+                dao.update( client, model, completeCallback );
+            }
+        };
 
-                // find the user from user code
-                dao.findByUserCode( client, model.userCode, findCallback );
+        // find the user from user code
+        dao.findByUserCode( client, model.userCode, findCallback );
+    };
+
+    this.processChallengeResponse = function(model, responseCallback) {
+        log.info('process the challenge response');
+
+        var client = dataSourceFactory.createRedisClient(),
+            completeCallback,
+            findCallback,
+            challengeCode = model.challengeCode;
+
+        // return only the id and a web socket channel
+        completeCallback = function(err, session) {
+            var obj = {};
+
+            if (err) {
+                log.error( err );
+            } else if (session) {
+                obj.id = session.id;
+                obj.channel = uuid.v4().replace(/-/g, '');
             }
 
-        } else {
-            log.warn('configuration update rejected: ', errors);
-            return responseCallback( new Error( errors.join('; ') ));
-        }
+            return responseCallback( err, obj );
+        };
+
+        findCallback = function(err, model) {
+            if (err) {
+                log.error( err );
+                responseCallback( err );
+            } else if (!model) {
+                err = new Error('session not found for given code...');
+                log.error( err );
+                responseCallback( err );
+            } else if (model.challengeCode === challengeCode) {
+                log.info('consume the challenge code: ', challengeCode);
+                model.challengeCode = "none";
+
+                // update the challenge code and access time
+                dao.update( client, model, completeCallback );
+            } else {
+                // wait for a while then send the rejection...
+                setTimeout(function() {
+                    err = new Error('challenge mismatch');
+                    log.error( err );
+                    return responseCallback( err );
+                }, 5000);
+            }
+        };
+
+        // find the user from user code
+        dao.findByUserCode( client, model.userCode, findCallback );
     };
 
     this.sendChallenge = function(session) {

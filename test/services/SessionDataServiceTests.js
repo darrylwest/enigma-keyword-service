@@ -5,7 +5,7 @@
  * @created: 10/28/14 7:32 AM
  */
 var should = require('chai').should(),
-    dash = require('lodash' ),
+    dash = require( 'lodash' ),
     Dataset = require('../fixtures/SessionDataset' ),
     MockServiceFactory = require('../mocks/MockServiceFactory' ),
     SessionDataService = require('../../app/services/SessionDataService' ),
@@ -20,6 +20,8 @@ describe('SessionDataService', function() {
                 'query',
                 'find',
                 'save',
+                'processSessionRequest',
+                'processChallengeResponse',
                 'validate',
                 'createChallengeCode',
                 'sendChallenge',
@@ -44,11 +46,11 @@ describe('SessionDataService', function() {
         var factory = MockServiceFactory.createInstance(),
             service = factory.createSessionDataService(),
             dataset = new Dataset(),
-            session = dataset.createModel();
+            session = dataset.createModel(),
+            dao = factory.createSessionDao();
 
         before(function(done) {
-            var dao = factory.createSessionDao(),
-                client = factory.getDataSourceFactory().createRedisClient(),
+            var client = factory.getDataSourceFactory().createRedisClient(),
                 callback;
 
             callback = function(err, model) {
@@ -66,10 +68,9 @@ describe('SessionDataService', function() {
 
         it('should save a new session document', function(done) {
             var ref = {
-                userCode:session.userCode,
-                flarg:'thing',
-                status:'request'
-            };
+                    userCode:dao.createHash( session.userCode ),
+                    status:'request'
+                };
 
             var callback = function(err, model) {
                 should.not.exist( err );

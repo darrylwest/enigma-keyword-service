@@ -5,14 +5,16 @@
  * @created: 10/28/14 6:58 AM
  */
 var dash = require('lodash'),
-    AbstractBaseDao = require('node-service-commons').dao.AbstractBaseDao;
+    AbstractBaseDao = require('node-service-commons').dao.AbstractBaseDao,
+    crypto = require('crypto');
 
 var SessionDao = function(options) {
     'use strict';
 
     var dao = this,
         log = options.log,
-        domain = options.domain;
+        domain = options.domain,
+        pepper = options.pepper;
 
     AbstractBaseDao.extend( this, options );
 
@@ -26,8 +28,17 @@ var SessionDao = function(options) {
             }
 
             var loopCallback = function(err, model) {
-                if (!err && model && model.userCode === code) {
-                    return callback( err, model );
+                if (err) {
+                    log.error( err );
+                    return callback( err );
+                }
+
+                if (model && model.userCode) {
+                    var hcode = dao.createHash( model.userCode );
+
+                    if (hcode === code) {
+                        return callback( err, model );
+                    }
                 }
 
                 var key = keys.pop();
@@ -45,6 +56,16 @@ var SessionDao = function(options) {
 
         client.keys( dao.createDomainKey( '*' ), keysCallback );
     };
+
+    this.createHash = function(code) {
+        var hmac = crypto.createHmac( 'sha512', new Buffer( pepper ));
+
+        hmac.update( code );
+
+        return hmac.digest( 'hex' );
+    };
+
+    if (!pepper) throw new Error('session dao must be constructed with a pepper array');
 };
 
 SessionDao.DAO_NAME = 'SessionDao';
