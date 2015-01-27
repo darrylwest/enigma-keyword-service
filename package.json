@@ -17,7 +17,7 @@
     "commander": "1.x",
     "express": "^4.8.2",
     "faye": "^1.0.3",
-    "lodash": "~2.4.1",
+    "lodash": "^3.0.0",
     "node-service-commons": "^0.90.63",
     "node-uuid": "^1.4.1",
     "redis": "^0.12.1",
